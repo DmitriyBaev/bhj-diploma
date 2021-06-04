@@ -11,19 +11,15 @@ class Modal {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor(element){
-    this.registerEvents;
-    this.onClose;
-    this.open;
-    this.close;
+  constructor(element) {
 
-    if(element) {
+    if (element) {
       this.element = element;
-      this.registerEvents()
+      registerEvents()
     } else {
-      throw new Error ('Ошибка модального окна')
+      throw new Error('Ошибка модального окна')
     }
-    
+
   }
 
   /**
@@ -32,10 +28,13 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    const dataDismiss = this.element.querySelector('[data-dismiss="modal"]');
-    dataDismiss.onclick = () => {
-      this.onClose()
-    }
+    const dataDismiss = element.querySelectorAll('[data-dismiss="modal"]');
+    const arrDataDismiss = Array.from(dataDismiss);
+    arrDataDismiss.forEach(elem => {
+      elem.onclick = () => {
+        onClose()
+      }
+    });
   }
 
   /**
@@ -43,7 +42,7 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-    this.close();
+    close();
     e.preventDefault()
   }
   /**
@@ -51,12 +50,12 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    this.classList.add('modal__open')
+    element.classList.add('modal__open')
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
-  close(){
-    this.classList.remove('modal__open')
+  close() {
+    element.classList.remove('modal__open')
   }
 }

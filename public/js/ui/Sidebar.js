@@ -36,13 +36,15 @@ class Sidebar {
   static initAuthLinks() {
     const buttonLogin = document.querySelector('.menu-item_login');
     buttonLogin.onclick = (e) => {
-      App.getModal('login')
+      console.log(App.getModal('login'))
+      App.getModal('login').open()
       e.preventDefault()
     }
 
     const buttonRegister = document.querySelector('.menu-item_register');
     buttonRegister.onclick = (e) => {
-      App.getModal('register')
+      App.getModal('register').open;
+      
       e.preventDefault()
     }
 
