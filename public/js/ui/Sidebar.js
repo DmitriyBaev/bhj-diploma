@@ -36,21 +36,19 @@ class Sidebar {
   static initAuthLinks() {
     const buttonLogin = document.querySelector('.menu-item_login');
     buttonLogin.onclick = (e) => {
-      console.log(App.getModal('login'))
       App.getModal('login').open()
       e.preventDefault()
     }
 
     const buttonRegister = document.querySelector('.menu-item_register');
     buttonRegister.onclick = (e) => {
-      App.getModal('register').open;
-      
+      App.getModal('register').open();
       e.preventDefault()
     }
 
     const buttonLogout = document.querySelector('.menu-item_logout');
     buttonLogout.onclick = (e) => {
-      User.logout()
+      User.logout(AsyncForm.data, callback)
       App.setState( 'init' )
       e.preventDefault()
     }

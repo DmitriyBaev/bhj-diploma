@@ -15,11 +15,10 @@ class Modal {
 
     if (element) {
       this.element = element;
-      registerEvents()
+      this.registerEvents()
     } else {
       throw new Error('Ошибка модального окна')
     }
-
   }
 
   /**
@@ -28,11 +27,11 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    const dataDismiss = element.querySelectorAll('[data-dismiss="modal"]');
+    const dataDismiss = this.element.querySelectorAll('[data-dismiss="modal"]');
     const arrDataDismiss = Array.from(dataDismiss);
     arrDataDismiss.forEach(elem => {
       elem.onclick = () => {
-        onClose()
+        this.onClose()
       }
     });
   }
@@ -41,21 +40,20 @@ class Modal {
    * Срабатывает после нажатия на элементы, закрывающие окно.
    * Закрывает текущее окно (Modal.close())
    * */
-  onClose(e) {
-    close();
-    e.preventDefault()
+  onClose() {
+    this.close();
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
    * со значением «block»
    * */
   open() {
-    element.classList.add('modal__open')
+    this.element.classList.add('modal__open')
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close() {
-    element.classList.remove('modal__open')
+    this.element.classList.remove('modal__open')
   }
 }

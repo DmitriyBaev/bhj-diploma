@@ -8,8 +8,9 @@ class CreateTransactionForm extends AsyncForm {
    * метод renderAccountsList
    * */
   constructor(element) {
-    super.renderAccountsList(element)
+    super(element);
   }
+  
 
   /**
    * Получает список счетов с помощью Account.list
