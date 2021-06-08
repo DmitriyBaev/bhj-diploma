@@ -26,15 +26,32 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    const submits = document.querySelectorAll('.btn-primary');
-    const arraySubmits = Array.from(submits);
-    arraySubmits.forEach(element => {
-      element.onclick = (e) => {
+    // const submits = document.querySelectorAll('.btn-primary');
+    // const arraySubmits = Array.from(submits);
+    // arraySubmits.forEach(element => {
+    //   element.onclick = (e) => {
+    //     this.submit();
+    //     e.preventDefault()
+    //   }
+    // });
+
+    const forms = document.querySelectorAll('.form');
+    const arrayForms = Array.from(forms);
+    arrayForms.forEach(element => {
+      element.addEventListener('submit', (e) => {
         this.submit();
         e.preventDefault()
-      }
-    });
-  }
+      });
+  })
+
+  // this.element.addEventListener('submit', (e) => {
+  //   this.submit();
+  //   e.preventDefault()
+  // });
+}
+
+
+
 
   /**
    * Преобразует данные формы в объект вида
@@ -45,22 +62,22 @@ class AsyncForm {
    * */
   getData() {
     const formData = new FormData(this.element);
-    const inputs = document.querySelectorAll('.form-control');
+    const inputs = formData.querySelectorAll('.form-control');
     const arrayInputs = Array.from(inputs);
     arrayInputs.forEach(element => {
        formData.append(element.getAttribute('name'), element.value)
     });
    
-    this.data = {};
+    let data = {};
     // for (let item in formData) {       так не сработало
     //   this.data[`${item}`] = formData.item
     // }
     const entries = formData.entries();
     for (let item of entries) {
       const key = item[ 0 ], value = item[ 1 ];
-      this.data[key] = value
+      data[key] = value
     }
-    return this.data
+    return data
   }
 
   onSubmit(options) {
@@ -72,7 +89,6 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-    this.getData();
-    this.onSubmit(this.data)
+    this.onSubmit(this.getData())
   }
 }

@@ -40,9 +40,11 @@ class User {
    * */
   static fetch(callback) {
     createRequest({
-      url: this.URL + '/current',
+      //url: this.URL + '/current', почему то не работает
+      url: '/user' + '/current',
       method: 'GET',
       responseType: 'json',
+      //data: AsyncForm.getData(), ошибка
       callback: (err, response) => {
         if (response.success == true) {
           this.setCurrent(response.user);
