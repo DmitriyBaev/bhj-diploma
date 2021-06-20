@@ -4,37 +4,37 @@
  * */
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
-    try {
-        
-        if (options.method === 'GET') {
-            const url = `${options.method}, ${options.url} +'?'`;  
-            for (let prop in options.data) {
-                url = url + `${prop} + '=' + ${options.data[prop]} + '&'`
-            }
-        //xhr.open(options.method, `${options.url}+'?'+'mail='+${options.data.mail}+'&'+'password='+${options.data.password}`);
-        xhr.open('http://localhost:8000' + url);
-        xhr.send()
-        } else {
-           let formData = new FormData();
-           
-            for (let prop in options.data) {
-                formData.append(prop, options.data[prop]);
-            }
-            
-            xhr.open('POST', 'http://localhost:8000' + options.url);
-            xhr.responseType = options.responseType;
-            xhr.withCredentials = true;
-            xhr.send(formData);
+    xhr.responseType = options.responseType;
+    xhr.withCredentials = true;
+
+    if (options.method === 'GET') {
+        options.url += '?';
+        for (let prop in options.data) {
+            options.url += `${prop}=${options.data[prop]}&`
+        }
+        try {
+            xhr.open(options.method, 'http://localhost:8000' + options.url);
+            xhr.send()
+        }
+        catch (err) {
+            options.callback(err)
         }
 
-        xhr.onload = () => {
-            options.callback(null, xhr.response)
-        }                                                                                                                       
+    } else {
+        let formData = new FormData();
 
-        // xhr.onerror = () => {
-        //     console.log(error);
-        // }
-    } catch (err) {
-        options.callback(err, xhr.response)
+        for (let prop in options.data) {
+            formData.append(prop, options.data[prop]);
+        }
+        try {
+            xhr.open(options.method, 'http://localhost:8000' + options.url);
+            xhr.send(formData);
+        }
+        catch (err) {
+            options.callback(err)
+        }
+    }
+    xhr.onload = () => {
+        options.callback(null, xhr.response)
     }
 };

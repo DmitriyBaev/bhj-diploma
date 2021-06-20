@@ -41,7 +41,6 @@ class User {
       url: this.URL + '/current', 
       method: 'GET',
       responseType: 'json',
-      //data: AsyncForm.getData(),
       callback: (err, response) => {
         if (response.success == true) {
           this.setCurrent(response.user);
