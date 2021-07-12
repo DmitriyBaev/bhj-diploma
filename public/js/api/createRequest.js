@@ -13,7 +13,7 @@ const createRequest = (options = {}) => {
             options.url += `${prop}=${options.data[prop]}&`
         }
         try {
-            xhr.open(options.method, 'http://localhost:8000' + options.url);
+            xhr.open(options.method, options.url);
             xhr.send()
         }
         catch (err) {
@@ -27,7 +27,7 @@ const createRequest = (options = {}) => {
             formData.append(prop, options.data[prop]);
         }
         try {
-            xhr.open(options.method, 'http://localhost:8000' + options.url);
+            xhr.open(options.method, options.url);
             xhr.send(formData);
         }
         catch (err) {

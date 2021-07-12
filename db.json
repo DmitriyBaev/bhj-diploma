@@ -17,6 +17,24 @@
       "email": "Dima@yandex.ru",
       "password": "123",
       "id": "2qmf25x0kq4w2uud"
+    },
+    {
+      "name": "Анна",
+      "email": "anya@yandex.ru",
+      "password": "123",
+      "id": "2qmf262gkq9shalf"
+    },
+    {
+      "name": "dima",
+      "email": "maverick-23@yandex.ru",
+      "password": "123",
+      "id": "2qmf25sokq9tpgr8"
+    },
+    {
+      "name": "Анна",
+      "email": "anya1@yandex.ru",
+      "password": "123",
+      "id": "2qmf22nckqb6nose"
     }
   ],
   "accounts": [
@@ -34,6 +52,16 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "сбер",
+      "user_id": "2qmf251wkpwquqkl",
+      "id": "2qmf24iskqiduxlc"
+    },
+    {
+      "name": "тиньков",
+      "user_id": "2qmf251wkpwquqkl",
+      "id": "2qmf25lskqyz7h0p"
     }
   ],
   "transactions": [
@@ -171,6 +199,24 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "2qmf22yokqseeeoa",
+      "type": "expense",
+      "name": "пиво",
+      "sum": 100,
+      "account_id": "2qmf24iskqiduxlc",
+      "user_id": "2qmf251wkpwquqkl",
+      "created_at": "2021-07-06T18:41:02.409Z"
+    },
+    {
+      "id": "2qmf221skqzbo33u",
+      "type": "income",
+      "name": "аванс",
+      "sum": 3000,
+      "account_id": "2qmf25lskqyz7h0p",
+      "user_id": "2qmf251wkpwquqkl",
+      "created_at": "2021-07-11T14:58:58.361Z"
     }
   ]
 }

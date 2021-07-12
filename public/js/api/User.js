@@ -13,23 +13,23 @@ class User {
  * */
 
   static setCurrent(user) {
-    localStorage.setItem(`${user}, ${response.user}`)
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   /**
    * Удаляет информацию об авторизованном
    * пользователе из локального хранилища.
    * */
-  static unsetCurrent(user) {
-    localStorage.removeItem(`${user}`)
+  static unsetCurrent() {
+    localStorage.removeItem('user')
   }
 
   /**
    * Возвращает текущего авторизованного пользователя
    * из локального хранилища
    * */
-  static current(user) {
-    return localStorage[`${user}`]
+  static current() {
+    return JSON.parse(localStorage.getItem('user'))
   }
 
   /**

@@ -48,9 +48,12 @@ class Sidebar {
 
     const buttonLogout = document.querySelector('.menu-item_logout');
     buttonLogout.onclick = (e) => {
-      User.logout(AsyncForm.data, callback)
+      User.logout(AsyncForm.submit, (err, responce) => {
+        if (responce.success === true) {
       App.setState( 'init' )
       e.preventDefault()
     }
+  })
+}
   }
 }
